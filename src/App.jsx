@@ -6,16 +6,16 @@ function randomValueFromArray(array){
 }
 
 export default function App() {
-    const showStory = false;
+    const [showStory, setShowStory] = useState(false);
     const [xItem,setXItem] = useState("");
     const [yItem,setYItem] = useState("");
     const [zItem,setZItem] = useState("");
+    const [ukus,setUkus] = useState("us");
     const xArray = ["Willy the Goblin","Big Daddy","Father Christmas"]
     const yArray = ["the soup kitchen","Disneyland","the White House"]
     const zArray = ["spontaneously combusted","melted into a puddle on the sidewalk","turned into a slug and crawled away"]
-    const [ukus,setUkus] = useState("us");
 
-    function gengerateStory() {
+    function generateStory() {
       setXItem(randomValueFromArray(xArray));
       setYItem(randomValueFromArray(yArray));
       setZItem(randomValueFromArray(zArray));
@@ -30,12 +30,22 @@ export default function App() {
         </div>
         <div>
           <label htmlFor="us">US</label>
-          <input type="radio" value="us" checked={ukus === "us"} onChange={() => setUkus("us")} />
+          <input 
+            type="radio" 
+            value="us" 
+            checked={ukus === "us"} 
+            onChange={() => setUkus("us")} 
+          />
           <label htmlFor="uk">UK</label>
-          <input type="radio" value="uk" checked={ukus === "uk"} onChange={() => setUkus("uk")} />
+          <input 
+            type="radio"
+            value="uk"
+            checked={ukus === "uk"} 
+            onChange={() => setUkus("uk")} 
+          />
         </div>
         <div>
-          <button>Generate random story</button>
+          <button onClick={generateStory}>Generate random story</button>
         </div>
         {showStory && (
           <p>
