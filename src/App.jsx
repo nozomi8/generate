@@ -11,6 +11,8 @@ export default function App() {
     const [yItem,setYItem] = useState("");
     const [zItem,setZItem] = useState("");
     const [ukus,setUkus] = useState("us");
+    const [customName, setCustomName] = useState("")
+    const [name, setName] = useState("Bob")
     const xArray = ["Willy the Goblin","Big Daddy","Father Christmas"]
     const yArray = ["the soup kitchen","Disneyland","the White House"]
     const zArray = ["spontaneously combusted","melted into a puddle on the sidewalk","turned into a slug and crawled away"]
@@ -19,6 +21,7 @@ export default function App() {
       setXItem(randomValueFromArray(xArray));
       setYItem(randomValueFromArray(yArray));
       setZItem(randomValueFromArray(zArray));
+      setName(customName || "Bob")
       setShowStory(true);
     }
 
@@ -26,7 +29,13 @@ export default function App() {
       <>
         <div>
           <label htmlFor="customname">Enter custom name:</label>
-          <input type="text" placeholder="" />
+          <input 
+            type="text"
+            placeholder="" 
+            id="customName"
+            value={customName}
+            onChange={(e) => setCustomName(e.target.value)}
+          />
         </div>
         <div>
           <label htmlFor="us">US</label>
@@ -51,7 +60,7 @@ export default function App() {
           <p>
             It was 94 fahrenheit outside, so {xItem} went for a walk. When they
             got to {yItem}, they stared in horror for a few moments, then {zItem}.
-            Bob saw the whole thing, but was not surprised — {xItem} weighs 300
+            {name} saw the whole thing, but was not surprised — {xItem} weighs 300
             pounds, and it was a hot day.
           </p>
         )}
