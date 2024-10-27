@@ -13,6 +13,8 @@ export default function App() {
     const [ukus,setUkus] = useState("us");
     const [customName, setCustomName] = useState("")
     const [name, setName] = useState("Bob")
+    const [weight, setWeight] = useState("300 pounds");
+    const [temp, setTemp] = useState("94 fahrenheit"); 
     const xArray = ["Willy the Goblin","Big Daddy","Father Christmas"]
     const yArray = ["the soup kitchen","Disneyland","the White House"]
     const zArray = ["spontaneously combusted","melted into a puddle on the sidewalk","turned into a slug and crawled away"]
@@ -23,6 +25,19 @@ export default function App() {
       setZItem(randomValueFromArray(zArray));
       setName(customName || "Bob")
       setShowStory(true);
+
+      const weightPounds = "300 pounds";
+      const tempF = "94 fahrenheit";
+
+      if(ukus == "uk") {
+        const weightStones = Math.round(300*0.0714286) + " stone";
+        const tempC = Math.round((5/9)*(94-32)) + " centigrande";
+        setWeight(weightStones);
+        setTemp(tempC);
+      } else {
+        setWeight(weightPounds);
+        setTemp(tempF);
+      }
     }
 
     return (
@@ -58,10 +73,10 @@ export default function App() {
         </div>
         {showStory && (
           <p>
-            It was 94 fahrenheit outside, so {xItem} went for a walk. When they
-            got to {yItem}, they stared in horror for a few moments, then {zItem}.
-            {name} saw the whole thing, but was not surprised — {xItem} weighs 300
-            pounds, and it was a hot day.
+            It was {temp} outside, so {xItem} went for a walk. When they
+            got to {yItem}, they stared in horror for a few moments
+            , then {zItem}. {name} saw the whole thing, but was not surprised — {xItem} weighs {weight}
+            , and it was a hot day.
           </p>
         )}
       </>
